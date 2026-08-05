@@ -1,0 +1,67 @@
+{% load static %}
+<!doctype html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>O‘quvchi qo‘shish · 12-maktab</title>
+    <link rel="stylesheet" href="{% static "apps/css/style.css" %}">
+</head>
+<body>
+<header class="site-header">
+    <a class="brand" href="student_list.html">12-maktab</a>
+    <nav aria-label="Asosiy menyu">
+        <a href="student_list.html">O‘quvchilar</a>
+        <a class="button button--small" href="student_form.html">+ Qo‘shish</a>
+    </nav>
+</header>
+
+<main class="container">
+    <a class="back-link" href="student_list.html">← Ortga</a>
+
+    <section class="form-card">
+        <p class="eyebrow">Create / Update</p>
+        <h1>Yangi o‘quvchi qo‘shish</h1>
+
+        <form action="#" class="student-form">
+            <div class="field">
+                <label for="first-name">Ism</label>
+                <input id="first-name" name="first_name" type="text" placeholder="Masalan: Ali" required>
+            </div>
+
+            <div class="field">
+                <label for="last-name">Familiya</label>
+                <input id="last-name" name="last_name" type="text" placeholder="Masalan: Valiyev" required>
+            </div>
+
+            <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="ali@example.com">
+                <small>Email kiritish ixtiyoriy.</small>
+            </div>
+
+            <div class="field">
+                <label for="grade">Sinf</label>
+                <select id="grade" name="grade" required>
+                    <option value="">Sinfni tanlang</option>
+                    <option>8-A sinf</option>
+                    <option>9-A sinf</option>
+                    <option>10-B sinf</option>
+                    <option>11-A sinf</option>
+                </select>
+            </div>
+
+            <div class="field checkbox-field">
+                <input id="is-active" name="is_active" type="checkbox" checked>
+                <label for="is-active">O‘quvchi faol</label>
+            </div>
+
+            <button class="button button--dark" type="submit">Saqlash</button>
+        </form>
+    </section>
+</main>
+
+<footer class="site-footer">HTML va Django template amaliyoti · 2026</footer>
+<script src="{% static "apps/js/app.js" %}" defer></script>
+</body>
+</html>

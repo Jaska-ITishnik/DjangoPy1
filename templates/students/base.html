@@ -1,0 +1,31 @@
+{% load static %}
+<!doctype html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}
+    	12 - Maktab
+    {% endblock %}</title>
+    <link rel="stylesheet" href="{% static "apps/css/style.css" %}">
+</head>
+<body>
+
+<header class="site-header">
+    <a class="brand" href="student_list.html">12-maktab</a>
+    <nav aria-label="Asosiy menyu">
+        <a href="student_list.html">O‘quvchilar</a>
+        <a class="button button--small" href="student_form.html">+ Qo‘shish</a>
+    </nav>
+</header>
+
+<main>
+    {% block content %}
+
+    {% endblock %}
+</main>
+
+<footer class="site-footer">HTML va Django template amaliyoti · 2026</footer>
+<script src="{% static "apps/js/app.js" %}" defer></script>
+</body>
+</html>
