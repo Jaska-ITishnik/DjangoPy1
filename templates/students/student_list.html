@@ -1,81 +1,64 @@
-{% load static %}
-<!doctype html>
-<html lang="uz">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>O‘quvchilar · 12-maktab</title>
-    <link rel="stylesheet" href="{% static "apps/css/style.css" %}">
-</head>
-<body>
-<header class="site-header">
-    <a class="brand" href="student_list.html">12-maktab</a>
-    <nav aria-label="Asosiy menyu">
-        <a href="student_list.html">O‘quvchilar</a>
-        <a class="button button--small" href="student_form.html">+ Qo‘shish</a>
-    </nav>
-</header>
+{% extends "students/base.html" %}
+{% block title %}
+    Forma
+{% endblock %}
+{% block content %}
+    <main class="container">
+        <section class="page-heading">
+            <div>
+                <p class="eyebrow">O‘quvchilar bazasi</p>
+                <h1>O‘quvchilar ro‘yxati</h1>
+            </div>
+            <a class="button" href="{% url 'create_or_update' %}">Yangi o‘quvchi</a>
+        </section>
 
-<main class="container">
-    <section class="page-heading">
-        <div>
-            <p class="eyebrow">O‘quvchilar bazasi</p>
-            <h1>O‘quvchilar ro‘yxati</h1>
+        <form class="search" action="#">
+            <label class="sr-only" for="q">Ism yoki familiya</label>
+            <input id="q" name="q" placeholder="Ism yoki familiya bo‘yicha qidiring">
+            <button class="button button--dark" type="submit">Qidirish</button>
+            <button class="link-button" type="reset">Tozalash</button>
+        </form>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr>
+                    <th>O‘quvchi</th>
+                    <th>Sinf</th>
+                    <th>Holat</th>
+                    <th>Amallar</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><a href="{% url 'detail' %}">Ali Valiyev</a></td>
+                    <td>9-A sinf</td>
+                    <td><span class="status status--active">Faol</span></td>
+                    <td class="actions">
+                        <a href="{% url 'create_or_update' %}">Tahrirlash</a>
+                        <a class="danger" href="{% url 'delete' %}">O‘chirish</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="student_detail.html">Madina Karimova</a></td>
+                    <td>10-B sinf</td>
+                    <td><span class="status status--active">Faol</span></td>
+                    <td class="actions">
+                        <a href="student_form.html">Tahrirlash</a>
+                        <a class="danger" href="student_confirm_delete.html">O‘chirish</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="student_detail.html">Jasur Ergashev</a></td>
+                    <td>8-A sinf</td>
+                    <td><span class="status">Nofaol</span></td>
+                    <td class="actions">
+                        <a href="student_form.html">Tahrirlash</a>
+                        <a class="danger" href="student_confirm_delete.html">O‘chirish</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-        <a class="button" href="{% url 'create_or_update' %}">Yangi o‘quvchi</a>
-    </section>
-
-    <form class="search" action="#">
-        <label class="sr-only" for="q">Ism yoki familiya</label>
-        <input id="q" name="q" placeholder="Ism yoki familiya bo‘yicha qidiring">
-        <button class="button button--dark" type="submit">Qidirish</button>
-        <button class="link-button" type="reset">Tozalash</button>
-    </form>
-
-    <div class="table-wrap">
-        <table>
-            <thead>
-            <tr>
-                <th>O‘quvchi</th>
-                <th>Sinf</th>
-                <th>Holat</th>
-                <th>Amallar</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><a href="{% url 'detail' %}">Ali Valiyev</a></td>
-                <td>9-A sinf</td>
-                <td><span class="status status--active">Faol</span></td>
-                <td class="actions">
-                    <a href="{% url 'create_or_update' %}">Tahrirlash</a>
-                    <a class="danger" href="{% url 'delete' %}">O‘chirish</a>
-                </td>
-            </tr>
-            <tr>
-                <td><a href="student_detail.html">Madina Karimova</a></td>
-                <td>10-B sinf</td>
-                <td><span class="status status--active">Faol</span></td>
-                <td class="actions">
-                    <a href="student_form.html">Tahrirlash</a>
-                    <a class="danger" href="student_confirm_delete.html">O‘chirish</a>
-                </td>
-            </tr>
-            <tr>
-                <td><a href="student_detail.html">Jasur Ergashev</a></td>
-                <td>8-A sinf</td>
-                <td><span class="status">Nofaol</span></td>
-                <td class="actions">
-                    <a href="student_form.html">Tahrirlash</a>
-                    <a class="danger" href="student_confirm_delete.html">O‘chirish</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</main>
-
-<footer class="site-footer">HTML va Django template amaliyoti · 2026</footer>
-<script src="{% static "apps/js/app.js" %}" defer></script>
-</body>
-</html>
+    </main>
+{% endblock %}

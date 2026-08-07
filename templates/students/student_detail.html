@@ -1,41 +1,24 @@
-{% load static %}
-<!doctype html>
-<html lang="uz">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ali Valiyev · 12-maktab</title>
-    <link rel="stylesheet" href="{% static "apps/css/style.css" %}">
-</head>
-<body>
-<header class="site-header">
-    <a class="brand" href="student_list.html">12-maktab</a>
-    <nav aria-label="Asosiy menyu">
-        <a href="student_list.html">O‘quvchilar</a>
-        <a class="button button--small" href="student_form.html">+ Qo‘shish</a>
-    </nav>
-</header>
+{% extends "students/base.html" %}
+{% block title %}
+    Batafsil ma'lumot
+{% endblock %}
+{% block content %}
+    <main class="container">
+        <a class="back-link" href="student_list.html">← Ro‘yxatga qaytish</a>
 
-<main class="container">
-    <a class="back-link" href="student_list.html">← Ro‘yxatga qaytish</a>
+        <article class="profile">
+            <div class="avatar">AV</div>
+            <div>
+                <p class="eyebrow">9-A sinf</p>
+                <h1>Ali Valiyev</h1>
+                <p>ali.valiyev@example.com</p>
+                <p>Ro‘yxatga olingan: 15.01.2026</p>
+            </div>
+        </article>
 
-    <article class="profile">
-        <div class="avatar">AV</div>
-        <div>
-            <p class="eyebrow">9-A sinf</p>
-            <h1>Ali Valiyev</h1>
-            <p>ali.valiyev@example.com</p>
-            <p>Ro‘yxatga olingan: 15.01.2026</p>
+        <div class="button-row">
+            <a class="button" href="student_form.html">Tahrirlash</a>
+            <a class="button button--danger" href="student_confirm_delete.html">O‘chirish</a>
         </div>
-    </article>
-
-    <div class="button-row">
-        <a class="button" href="student_form.html">Tahrirlash</a>
-        <a class="button button--danger" href="student_confirm_delete.html">O‘chirish</a>
-    </div>
-</main>
-
-<footer class="site-footer">HTML va Django template amaliyoti · 2026</footer>
-<script src="{% static "apps/js/app.js" %}" defer></script>
-</body>
-</html>
+    </main>
+{% endblock %}
