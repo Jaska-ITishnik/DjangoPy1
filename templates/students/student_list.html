@@ -1,6 +1,6 @@
 {% extends "students/base.html" %}
 {% block title %}
-    Forma
+    12 - Maktab
 {% endblock %}
 {% block content %}
     <main class="container">
@@ -30,33 +30,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td><a href="{% url 'detail' %}">Ali Valiyev</a></td>
-                    <td>9-A sinf</td>
-                    <td><span class="status status--active">Faol</span></td>
-                    <td class="actions">
-                        <a href="{% url 'create_or_update' %}">Tahrirlash</a>
-                        <a class="danger" href="{% url 'delete' %}">O‘chirish</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href="student_detail.html">Madina Karimova</a></td>
-                    <td>10-B sinf</td>
-                    <td><span class="status status--active">Faol</span></td>
-                    <td class="actions">
-                        <a href="student_form.html">Tahrirlash</a>
-                        <a class="danger" href="student_confirm_delete.html">O‘chirish</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href="student_detail.html">Jasur Ergashev</a></td>
-                    <td>8-A sinf</td>
-                    <td><span class="status">Nofaol</span></td>
-                    <td class="actions">
-                        <a href="student_form.html">Tahrirlash</a>
-                        <a class="danger" href="student_confirm_delete.html">O‘chirish</a>
-                    </td>
-                </tr>
+                {% for student in students %}
+                    <tr>
+                        <td><a href="{% url 'detail' %}">{{ student.fullname }}</a></td>
+                        <td>{{ student.get_grade_display }}</td>
+                        <td><span class="status status--active">{{ student.get_status_display }}</span></td>
+                        <td class="actions">
+                            <a href="{% url 'create_or_update' %}">Tahrirlash</a>
+                            <a class="danger" href="{% url 'delete' %}">O‘chirish</a>
+                        </td>
+                    </tr>
+                {% endfor %}
                 </tbody>
             </table>
         </div>
