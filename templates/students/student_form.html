@@ -8,43 +8,80 @@
 
         <section class="form-card">
             <p class="eyebrow">Create / Update</p>
-            <h1>Yangi o‘quvchi qo‘shish</h1>
+            <h1>✏️Tahrirlash</h1>
+            {% if student %}
+                <form method="post" action="{% url 'student_update' student.pk %}" class="student-form">
+                    {% csrf_token %}
+                    <div class="field">
+                        <label for="first-name">Ism Familiya</label>
+                        <input id="first-name" name="fullname" value="{{ student.fullname }}" type="text"
+                               placeholder="Masalan: Alijon Valiyev"
+                               required>
+                    </div>
 
-            <form action="#" class="student-form">
-                <div class="field">
-                    <label for="first-name">Ism</label>
-                    <input id="first-name" name="first_name" type="text" placeholder="Masalan: Ali" required>
-                </div>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" value="{{ student.email }}" type="email"
+                               placeholder="ali@example.com">
+                        <small>Email kiritish ixtiyoriy.</small>
+                    </div>
 
-                <div class="field">
-                    <label for="last-name">Familiya</label>
-                    <input id="last-name" name="last_name" type="text" placeholder="Masalan: Valiyev" required>
-                </div>
+                    <div class="field">
+                        <label for="grade">Sinf</label>
+                        <select id="grade" name="grade" required>
+                            <option value="{{ student.grade }}">{{ student.get_grade_display }}</option>
+                            {% for grade in student.get_grades %}
+                                {% if student.get_grade_display != grade %}
+                                    <option value="2_grade">{{ grade }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
 
-                <div class="field">
-                    <label for="email">Email</label>
-                    <input id="email" name="email" type="email" placeholder="ali@example.com">
-                    <small>Email kiritish ixtiyoriy.</small>
-                </div>
+                    <div class="field checkbox-field">
+                        <input id="is-active" name="status" type="checkbox" checked>
+                        <label for="is-active">O‘quvchi faol</label>
+                    </div>
 
-                <div class="field">
-                    <label for="grade">Sinf</label>
-                    <select id="grade" name="grade" required>
-                        <option value="">Sinfni tanlang</option>
-                        <option>8-A sinf</option>
-                        <option>9-A sinf</option>
-                        <option>10-B sinf</option>
-                        <option>11-A sinf</option>
-                    </select>
-                </div>
+                    <button class="button button--dark" type="submit">Saqlash</button>
+                </form>
+            {% else %}
+                <form action="#" class="student-form">
+                    <div class="field">
+                        <label for="first-name">Ism</label>
+                        <input id="first-name" name="first_name" type="text" placeholder="Masalan: Ali" required>
+                    </div>
 
-                <div class="field checkbox-field">
-                    <input id="is-active" name="is_active" type="checkbox" checked>
-                    <label for="is-active">O‘quvchi faol</label>
-                </div>
+                    <div class="field">
+                        <label for="last-name">Familiya</label>
+                        <input id="last-name" name="last_name" type="text" placeholder="Masalan: Valiyev" required>
+                    </div>
 
-                <button class="button button--dark" type="submit">Saqlash</button>
-            </form>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" placeholder="ali@example.com">
+                        <small>Email kiritish ixtiyoriy.</small>
+                    </div>
+
+                    <div class="field">
+                        <label for="grade">Sinf</label>
+                        <select id="grade" name="grade" required>
+                            <option value="">Sinfni tanlang</option>
+                            <option>8-A sinf</option>
+                            <option>9-A sinf</option>
+                            <option>10-B sinf</option>
+                            <option>11-A sinf</option>
+                        </select>
+                    </div>
+
+                    <div class="field checkbox-field">
+                        <input id="is-active" name="is_active" type="checkbox" checked>
+                        <label for="is-active">O‘quvchi faol</label>
+                    </div>
+
+                    <button class="button button--dark" type="submit">Saqlash</button>
+                </form>
+            {% endif %}
         </section>
     </main>
 {% endblock %}

@@ -1,7 +1,7 @@
 from django.urls import path
 
 from apps.views import StudentListView, \
-    StudentDetailTemplateView, StudentDeleteTemplateView, StudentCreateTemplateView
+    StudentDetailView, StudentDeleteTemplateView, StudentCreateTemplateView, StudentUpdateView
 
 # from apps.views import profiles
 
@@ -13,6 +13,7 @@ urlpatterns = [
 
     path('', StudentListView.as_view(), name="students_list"),
     path('delete', StudentDeleteTemplateView.as_view(), name="delete"),
-    path('detail', StudentDetailTemplateView.as_view(), name="detail"),
+    path('detail/<int:pk>', StudentDetailView.as_view(), name="detail"),
     path('create_or_update', StudentCreateTemplateView.as_view(), name="create_or_update"),
+    path('update/<int:pk>', StudentUpdateView.as_view(), name="student_update"),
 ]

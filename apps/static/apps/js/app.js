@@ -9,12 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
     //     });
     // }
 
-    if (studentForm) {
-        studentForm.addEventListener("submit", (event) => {
-            event.preventDefault();
-            alert("Forma tayyor. Keyingi darslarda Django backendga ulanadi.");
-        });
-    }
+    // if (studentForm) {
+    //     studentForm.addEventListener("submit", (event) => {
+    //         event.preventDefault();
+    //         alert("Forma tayyor. Keyingi darslarda Django backendga ulanadi.");
+    //     });
+    // }
 });
 
 

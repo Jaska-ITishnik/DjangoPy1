@@ -1,6 +1,6 @@
 from django.db.models.base import Model
 from django.db.models.enums import TextChoices
-from django.db.models.fields import CharField, EmailField
+from django.db.models.fields import CharField, EmailField, DateTimeField
 
 
 class Student(Model):
@@ -23,3 +23,9 @@ class Student(Model):
     grade = CharField(choices=Grade.choices)  # noqa
     email = EmailField(max_length=50, unique=True)
     status = CharField(choices=Status.choices)  # noqa
+    created_at = DateTimeField(auto_now_add=True)
+    updated_at = DateTimeField(auto_now=True)
+
+    @property
+    def get_grades(self):
+        return [choice[-1] for choice in self.Grade.choices]  # noqa

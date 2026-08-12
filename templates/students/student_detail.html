@@ -9,15 +9,15 @@
         <article class="profile">
             <div class="avatar">AV</div>
             <div>
-                <p class="eyebrow">9-A sinf</p>
-                <h1>Ali Valiyev</h1>
-                <p>ali.valiyev@example.com</p>
-                <p>Ro‘yxatga olingan: 15.01.2026</p>
+                <p class="eyebrow">{{ student.get_grade_display }}</p>
+                <h1>{{ student.fullname }}</h1>
+                <p>{{ student.email }}</p>
+                <p>Ro‘yxatga olingan: {{ student.created_at|date:'d.m.Y' }}</p>
             </div>
         </article>
 
         <div class="button-row">
-            <a class="button" href="student_form.html">Tahrirlash</a>
+            <a class="button" href="{% url 'student_update' student.id %}">Tahrirlash</a>
             <a class="button button--danger" href="student_confirm_delete.html">O‘chirish</a>
         </div>
     </main>
