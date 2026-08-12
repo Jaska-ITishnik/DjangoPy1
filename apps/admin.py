@@ -9,3 +9,4 @@ from apps.models import Student
 @admin.register(Student)
 class StudentModelAdmin(ModelAdmin):
     list_display = "id", "fullname", "email", "grade", "status"
+    list_display_links = "fullname",

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from apps.views import StudentTemplateView, \
+from apps.views import StudentListView, \
     StudentDetailTemplateView, StudentDeleteTemplateView, StudentCreateTemplateView
 
 # from apps.views import profiles
@@ -11,7 +11,7 @@ urlpatterns = [
     # path('detail', student_detail, name="detail"),
     # path('create_or_update', student_create_or_update, name="create_or_update"),
 
-    path('', StudentTemplateView.as_view(), name="students_list"),
+    path('', StudentListView.as_view(), name="students_list"),
     path('delete', StudentDeleteTemplateView.as_view(), name="delete"),
     path('detail', StudentDetailTemplateView.as_view(), name="detail"),
     path('create_or_update', StudentCreateTemplateView.as_view(), name="create_or_update"),

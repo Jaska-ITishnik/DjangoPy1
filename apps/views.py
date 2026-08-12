@@ -22,7 +22,7 @@ from apps.models import Student
 
 # Class based views
 
-class StudentTemplateView(ListView):
+class StudentListView(ListView):
     template_name = "students/student_list.html"
     queryset = Student.objects.all()
     context_object_name = "students"
