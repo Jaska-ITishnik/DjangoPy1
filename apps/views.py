@@ -1,7 +1,8 @@
+from typing import Any
+
 from django.urls import reverse_lazy
-from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.views.generic.list import ListView
 
 from apps.forms import StudentModelForm
@@ -20,12 +21,23 @@ class StudentDetailView(DetailView):
     context_object_name = "student"
 
 
-class StudentDeleteTemplateView(TemplateView):
+class StudentDeleteView(DeleteView):
     template_name = "students/student_confirm_delete.html"
+    queryset = Student.objects.all()
+    context_object_name = "student"
+    success_url = reverse_lazy("students_list")
 
 
-class StudentCreateTemplateView(TemplateView):
+class StudentCreateView(CreateView):
     template_name = "students/student_form.html"
+    queryset = Student.objects.all()
+    success_url = reverse_lazy("students_list")
+    form_class = StudentModelForm
+
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        ctx = super().get_context_data(**kwargs)
+        ctx["grades"] = {choice[0]: choice[-1] for choice in Student.Grade.choices}
+        return ctx
 
 
 class StudentUpdateView(UpdateView):

@@ -37,7 +37,7 @@
                         <td><span class="status status--active">{{ student.get_status_display }}</span></td>
                         <td class="actions">
                             <a href="{% url 'student_update' student.pk %}">Tahrirlash</a>
-                            <a class="danger" href="{% url 'delete' %}">O‘chirish</a>
+                            <a class="danger" href="{% url 'delete' student.pk %}">O‘chirish</a>
                         </td>
                     </tr>
                 {% endfor %}

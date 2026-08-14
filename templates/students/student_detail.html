@@ -18,7 +18,7 @@
 
         <div class="button-row">
             <a class="button" href="{% url 'student_update' student.id %}">Tahrirlash</a>
-            <a class="button button--danger" href="student_confirm_delete.html">O‘chirish</a>
+            <a class="button button--danger" href="{% url 'delete' student.pk %}">O‘chirish</a>
         </div>
     </main>
 {% endblock %}

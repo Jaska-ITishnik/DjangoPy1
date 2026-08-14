@@ -14,6 +14,8 @@ class Student(Model):
         SEVEN = "7_grade", "7 - Sinf"
         EIGHT = "8_grade", "8 - Sinf"
         NINE = "9_grade", "9 - Sinf"
+        TEN = "10_grade", "10 - Sinf"
+        ELEVEN = "11_grade", "11 - Sinf"
 
     class Status(TextChoices):
         ACTIVE = "active", "✅Faol"

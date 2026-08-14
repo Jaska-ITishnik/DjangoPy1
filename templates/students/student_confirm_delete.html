@@ -6,12 +6,15 @@
     <main class="container">
         <section class="confirm-card">
             <p class="eyebrow">Delete</p>
-            <h1>Ali Valiyev o‘chirilsinmi?</h1>
-            <p>Bu hozircha faqat frontend namuna. Tugmalar backendga ulanmagan.</p>
-
+            <h1>{{ student.fullname }} o‘chirilsinmi?</h1>
             <div class="button-row">
-                <a class="button" href="student_detail.html">Bekor qilish</a>
-                <a class="button button--danger" href="student_list.html">Ha, o‘chirish</a>
+                <a class="button" href="{% url 'students_list' %}">Bekor qilish</a>
+                <form method="post" action="{% url 'delete' student.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" class="button button--danger">
+                        Ha, o‘chirish
+                    </button>
+                </form>
             </div>
         </section>
     </main>
