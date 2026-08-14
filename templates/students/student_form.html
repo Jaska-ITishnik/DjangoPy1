@@ -30,18 +30,28 @@
                         <label for="grade">Sinf</label>
                         <select id="grade" name="grade" required>
                             <option value="{{ student.grade }}">{{ student.get_grade_display }}</option>
-                            {% for grade in student.get_grades %}
+                            {% for k, grade in student.get_grades.items %}
                                 {% if student.get_grade_display != grade %}
-                                    <option value="2_grade">{{ grade }}</option>
+                                    <option value="{{ k }}">{{ grade }}</option>
                                 {% endif %}
                             {% endfor %}
                         </select>
                     </div>
 
                     <div class="field checkbox-field">
-                        <input id="is-active" name="status" type="checkbox" checked>
+                        <input type="hidden" name="status" value="inactive">
+
+                        <input
+                                id="is-active"
+                                name="status"
+                                type="checkbox"
+                                value="active"
+                                checked
+                        >
+
                         <label for="is-active">O‘quvchi faol</label>
                     </div>
+
 
                     <button class="button button--dark" type="submit">Saqlash</button>
                 </form>
@@ -49,12 +59,14 @@
                 <form action="#" class="student-form">
                     <div class="field">
                         <label for="first-name">Ism</label>
-                        <input id="first-name" name="first_name" type="text" placeholder="Masalan: Ali" required>
+                        <input id="first-name" name="first_name" type="text" placeholder="Masalan: Ali"
+                               required>
                     </div>
 
                     <div class="field">
                         <label for="last-name">Familiya</label>
-                        <input id="last-name" name="last_name" type="text" placeholder="Masalan: Valiyev" required>
+                        <input id="last-name" name="last_name" type="text" placeholder="Masalan: Valiyev"
+                               required>
                     </div>
 
                     <div class="field">

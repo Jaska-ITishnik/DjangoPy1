@@ -9,24 +9,6 @@ from apps.forms import StudentModelForm
 from apps.models import Student
 
 
-# def students(request):
-#     return TemplateResponse(request, template="students/student_list.html")
-#
-#
-# def student_delete(request):
-#     return TemplateResponse(request, template="students/student_confirm_delete.html")
-#
-#
-# def student_detail(request):
-#     return TemplateResponse(request, template="students/student_detail.html")
-#
-#
-# def student_create_or_update(request):
-#     return TemplateResponse(request, template="students/student_form.html")
-
-
-# Class based views
-
 class StudentListView(ListView):
     template_name = "students/student_list.html"
     queryset = Student.objects.all()

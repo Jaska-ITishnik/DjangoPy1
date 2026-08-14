@@ -28,4 +28,4 @@ class Student(Model):
 
     @property
     def get_grades(self):
-        return [choice[-1] for choice in self.Grade.choices]  # noqa
+        return {choice[0]: choice[-1] for choice in self.Grade.choices}  # noqa
