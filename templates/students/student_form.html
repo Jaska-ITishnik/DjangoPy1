@@ -8,8 +8,8 @@
 
         <section class="form-card">
             <p class="eyebrow">Create / Update</p>
-            <h1>✏️Tahrirlash</h1>
             {% if student %}
+                <h1>✏️Tahrirlash</h1>
                 <form method="post" action="{% url 'student_update' student.pk %}" class="student-form">
                     {% csrf_token %}
                     <div class="field">
@@ -56,6 +56,7 @@
                     <button class="button button--dark" type="submit">Saqlash</button>
                 </form>
             {% else %}
+                <h1>Qo'shish</h1>
                 <form action="#" class="student-form">
                     <div class="field">
                         <label for="first-name">Ism</label>

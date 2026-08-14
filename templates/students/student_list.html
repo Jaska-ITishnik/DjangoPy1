@@ -9,7 +9,7 @@
                 <p class="eyebrow">O‘quvchilar bazasi</p>
                 <h1>O‘quvchilar ro‘yxati</h1>
             </div>
-            <a class="button" href="{% url 'create_or_update' %}">Yangi o‘quvchi</a>
+            <a class="button" href="{% url 'student_create' %}">Yangi o‘quvchi</a>
         </section>
 
         <form class="search" action="#">
@@ -36,7 +36,7 @@
                         <td>{{ student.get_grade_display }}</td>
                         <td><span class="status status--active">{{ student.get_status_display }}</span></td>
                         <td class="actions">
-                            <a href="{% url 'create_or_update' %}">Tahrirlash</a>
+                            <a href="{% url 'student_update' student.pk %}">Tahrirlash</a>
                             <a class="danger" href="{% url 'delete' %}">O‘chirish</a>
                         </td>
                     </tr>

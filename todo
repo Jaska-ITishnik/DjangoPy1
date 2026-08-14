@@ -1,0 +1,10 @@
+apps/forms.py
+apps/models.py
+apps/views.py
+apps/urls.py
+apps/admin.py
+
+
+1.Create new student
+2.Delete exists student
+1.Search for students

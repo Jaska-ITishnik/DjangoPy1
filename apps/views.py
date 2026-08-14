@@ -1,4 +1,3 @@
-from django.http.response import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
@@ -35,6 +34,3 @@ class StudentUpdateView(UpdateView):
     template_name = "students/student_form.html"
     context_object_name = "student"
     success_url = reverse_lazy("students_list")
-
-    def form_invalid(self, form) -> HttpResponse:
-        return super().form_invalid(form)
