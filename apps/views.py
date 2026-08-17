@@ -1,5 +1,6 @@
 from typing import Any
 
+from django.db.models import QuerySet
 from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
@@ -13,6 +14,13 @@ class StudentListView(ListView):
     template_name = "students/student_list.html"
     queryset = Student.objects.all()
     context_object_name = "students"
+
+    def get_queryset(self) -> QuerySet:
+        qs = super().get_queryset()
+        search_keyword = self.request.GET.get("search_key")
+        if search_keyword:
+            qs = qs.filter(fullname__icontains=search_keyword)
+        return qs
 
 
 class StudentDetailView(DetailView):

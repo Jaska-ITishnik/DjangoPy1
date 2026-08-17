@@ -12,9 +12,9 @@
             <a class="button" href="{% url 'student_create' %}">Yangi o‘quvchi</a>
         </section>
 
-        <form class="search" action="#">
+        <form class="search" method="get" action="{% url 'students_list' %}">
             <label class="sr-only" for="q">Ism yoki familiya</label>
-            <input id="q" name="q" placeholder="Ism yoki familiya bo‘yicha qidiring">
+            <input id="q" name="search_key" placeholder="Ism yoki familiya bo‘yicha qidiring">
             <button class="button button--dark" type="submit">Qidirish</button>
             <button class="link-button" type="reset">Tozalash</button>
         </form>
